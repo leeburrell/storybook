@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,3 +15,85 @@ body {
 	margin: 0;
 	font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+$custom-primary-palette: (
+	50: #e1f5fe,
+	100: #b3e5fc,
+	200: #81d4fa,
+	300: #4fc3f7,
+	400: #29b6f6,
+	500: #03a9f4,
+	600: #039be5,
+	700: #0288d1,
+	800: #0277bd,
+	900: #01579b,
+	A100: #80d8ff,
+	A200: #40c4ff,
+	A400: #00b0ff,
+	A700: #0091ea,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: white,
+		600: white,
+		700: white,
+		800: white,
+		900: white,
+		A100: #000,
+		A200: #000,
+		A400: #000,
+		A700: #000
+	)
+);
+
+$custom-primary-palette2: (
+	50: #e1f4fe,
+	100: #b345fc,
+	200: #8144fa,
+	300: #4f43f7,
+	400: #2946f6,
+	500: #0349f4,
+	600: #034be5,
+	700: #0248d1,
+	800: #0247bd,
+	900: #01479b,
+	A100: #2438ff,
+	A200: #2434ff,
+	A400: #2430ff,
+	A700: #2391ea,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: white,
+		600: white,
+		700: white,
+		800: white,
+		900: white,
+		A100: #000,
+		A200: #000,
+		A400: #000,
+		A700: #000
+	)
+);
+
+$custom-primary: mat.m2-define-palette($custom-primary-palette2);
+$custom-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$custom-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$custom-theme: mat.m2-define-light-theme(
+	(
+		color: (
+			primary: $custom-primary,
+			accent: $custom-accent,
+			warn: $custom-warn
+		)
+	)
+);
+
+@include mat.all-component-themes($custom-theme);

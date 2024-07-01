@@ -6,13 +6,34 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'ama-button',
   standalone: true,
   imports: [CommonModule, MatButtonModule],
-  template: ` <button mat-raised-button>
-    {{ label }}
-  </button>`,
+  template: `<section>
+  <div class="example-label">{{ label }}</div>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-fab extended>
+          <mat-icon>favorite</mat-icon>
+          Basic
+        </button>
+      </div>
+      <div class="example-button-container">
+        <button mat-fab extended disabled>
+          <mat-icon>favorite</mat-icon>
+          Disabled
+        </button>
+      </div>
+      <div class="example-button-container">
+        <a mat-fab extended routerLink=".">
+          <mat-icon>favorite</mat-icon>
+          Link
+        </a>
+      </div>
+    </div>
+  </div>
+</section>`,
   styleUrls: ['./button.scss'],
 })
 export class ButtonComponent {
-  textSize = signal(3);
   /**
    * Is this the principal call to action on the page?
    */
