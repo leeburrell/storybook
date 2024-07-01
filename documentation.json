@@ -201,7 +201,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".test {\n\t@apply bg-[red] h-40;\n}\n",
+                    "data": "\n",
                     "styleUrl": "./button.scss"
                 }
             ],
