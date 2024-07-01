@@ -1,0 +1,48 @@
+{
+  "name": "angular-latest",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "storybook": "ng run angular-latest:storybook",
+    "build-storybook": "ng run angular-latest:build-storybook"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^18.0.0",
+    "@angular/cdk": "^18.0.5",
+    "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "@angular/forms": "^18.0.0",
+    "@angular/material": "^18.0.5",
+    "@angular/platform-browser": "^18.0.0",
+    "@angular/platform-browser-dynamic": "^18.0.0",
+    "@angular/router": "^18.0.0",
+    "rxjs": "~7.8.0",
+    "sass": "^1.77.6",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.6",
+    "@angular/cli": "^18.0.6",
+    "@angular/compiler-cli": "^18.0.0",
+    "@chromatic-com/storybook": "^1.6.0",
+    "@compodoc/compodoc": "^1.1.25",
+    "@storybook/addon-docs": "^8.1.11",
+    "@storybook/addon-essentials": "^8.1.11",
+    "@storybook/addon-interactions": "^8.1.11",
+    "@storybook/addon-links": "^8.1.11",
+    "@storybook/angular": "^8.1.11",
+    "@storybook/blocks": "^8.1.11",
+    "@storybook/test": "^8.1.11",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "storybook": "^8.1.11",
+    "tailwindcss": "^3.4.4",
+    "typescript": "~5.4.2"
+  }
+}
