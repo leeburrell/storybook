@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'storybook-button',
+  selector: 'ama-button',
   standalone: true,
   imports: [CommonModule, MatButtonModule],
-  template: ` <button mat-flat-button class="test">
+  template: ` <button mat-raised-button>
     {{ label }}
   </button>`,
   styleUrls: ['./button.scss'],
 })
 export class ButtonComponent {
+  textSize = signal(3);
   /**
    * Is this the principal call to action on the page?
    */

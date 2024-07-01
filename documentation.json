@@ -84,19 +84,19 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-07e3bd30fe6c7c3df6f741b6b5c48ab9840a898f6ae988d7178c8316014ae41ccf096004308ed179cf1fd60bbe031b253b2e5fe8702a8fbd6f0c949b3e4dd263",
+            "id": "component-ButtonComponent-127ce6e5b3f15e8c0389dd2539538bd07ed92156f981d16c55b7f8fc8f594bb983ed3db57eeef367d5bc15915b858fef072b6e5715c2dc40053f4ef0fb273b44",
             "file": "src/app/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-button",
+            "selector": "ama-button",
             "styleUrls": [
                 "./button.scss"
             ],
             "styles": [],
-            "template": "<button mat-flat-button class=\"test\">   {{ label }}\n </button>",
+            "template": "<button mat-raised-button secondary>   {{ label }}\n </button>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -107,7 +107,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nWhat background color to use\n",
                     "description": "<p>What background color to use</p>\n",
-                    "line": 25,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -118,15 +118,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 769,
-                            "end": 782,
+                            "pos": 794,
+                            "end": 807,
                             "flags": 16842752,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 334,
                             "tagName": {
-                                "pos": 770,
-                                "end": 778,
+                                "pos": 795,
+                                "end": 803,
                                 "flags": 16842752,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -138,7 +138,7 @@
                     ],
                     "rawdescription": "\n\nButton contents\n\n",
                     "description": "<p>Button contents</p>\n",
-                    "line": 39,
+                    "line": 40,
                     "type": "string",
                     "decorators": []
                 },
@@ -149,7 +149,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nIs this the principal call to action on the page?\n",
                     "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 19,
+                    "line": 20,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -160,7 +160,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHow large should the button be?\n",
                     "description": "<p>How large should the button be?</p>\n",
-                    "line": 31,
+                    "line": 32,
                     "type": "\"small\" | \"medium\" | \"large\"",
                     "decorators": []
                 }
@@ -173,11 +173,22 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOptional click handler\n",
                     "description": "<p>Optional click handler</p>\n",
-                    "line": 45,
+                    "line": 46,
                     "type": "EventEmitter"
                 }
             ],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "textSize",
+                    "defaultValue": "signal(3)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -197,7 +208,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule, MatButtonModule],\n  template: ` <button mat-flat-button class=\"test\">\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.scss'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, signal } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'ama-button',\n  standalone: true,\n  imports: [CommonModule, MatButtonModule],\n  template: ` <button mat-raised-button secondary>\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.scss'],\n})\nexport class ButtonComponent {\n  textSize = signal(3);\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -214,7 +225,7 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 47
+                        "line": 48
                     }
                 }
             }
@@ -436,7 +447,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 13,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -463,9 +474,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
+                "coveragePercent": 71,
+                "coverageCount": "5/7",
+                "status": "good"
             },
             {
                 "filePath": "src/stories/header.component.ts",
