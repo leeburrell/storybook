@@ -1,1 +1,11 @@
+.mat-mdc-unelevated-button {
+	@apply h-[3.125rem] px-8 font-semibold;
 
+	&__rounded {
+		@apply rounded-full;
+	}
+
+	&__small {
+		@apply h-6;
+	}
+}

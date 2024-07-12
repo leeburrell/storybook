@@ -1,74 +1,66 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { CommonModule, NgClass } from '@angular/common';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'ama-button',
+  selector: 'freida-button',
   standalone: true,
-  imports: [CommonModule, MatButtonModule],
-  template: `<section>
-  <div class="example-label">{{ label }}</div>
-  <div class="example-button-row">
-    <div class="example-flex-container">
-      <div class="example-button-container">
-        <button mat-fab extended>
-          <mat-icon>favorite</mat-icon>
-          Basic
-        </button>
-      </div>
-      <div class="example-button-container">
-        <button mat-fab extended disabled>
-          <mat-icon>favorite</mat-icon>
-          Disabled
-        </button>
-      </div>
-      <div class="example-button-container">
-        <a mat-fab extended routerLink=".">
-          <mat-icon>favorite</mat-icon>
-          Link
-        </a>
-      </div>
-    </div>
-  </div>
-</section>`,
+  imports: [CommonModule, MatButtonModule, NgClass],
+  template: `
+  @if (!link) {
+  <button mat-flat-button
+  [color]='buttonTheme'
+  [disabled]="disabled"
+  [ngClass]='{
+    "mat-mdc-unelevated-button__rounded" : isRounded,
+    "mat-mdc-unelevated-button__small" : small
+  }'>
+  {{ text }}
+  </button>
+  }
+  @if (link) {
+  <a mat-flat-button
+  [href]="url"
+  [color]='buttonTheme'
+  [disabled]="disabled"
+  [ngClass]='{
+    "mat-mdc-unelevated-button__rounded" : isRounded,
+    "mat-mdc-unelevated-button__small" : small
+  }'
+  target="_blank">
+  {{ text }}
+  </a>
+  }
+`,
   styleUrls: ['./button.scss'],
 })
 export class ButtonComponent {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  @Input()
-  primary = false;
 
-  /**
-   * What background color to use
-   */
-  @Input()
-  backgroundColor?: string;
+  public materialCssClass: string = "mat-mdc-unelevated-button__rounded"
 
-  /**
-   * How large should the button be?
-   */
-  @Input()
-  size: 'small' | 'medium' | 'large' = 'medium';
+  @Output() public buttonClick = new EventEmitter<any>();
+  @Input() public text: string = '';
+  @Input() public buttonType = 'submit';
+  @Input() public link = false;
+  @Input() public externalLink = false;
+  @Input() public buttonTheme: string = 'primary';
+  @Input() public url: string = '';
+  @Input() public fontSize = '1em';
+  @Input() public iconName: any = false;
+  @Input() public isRounded = true;
+  @Input() public small = false;
+  @Input() public angled = false;
+  @Input() public reverse = false;
+  @Input() public disabled = false;
+  @Input() public size = '';
 
-  /**
-   * Button contents
-   *
-   * @required
-   */
-  @Input()
-  label = 'Button';
-
-  /**
-   * Optional click handler
-   */
   @Output()
   onClick = new EventEmitter<Event>();
 
   public get classes(): string[] {
-    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+    const mode = this.buttonTheme = 'primary' ? 'storybook-button--primary' : 'storybook-button--secondary';
 
-    return ['storybook-button', `storybook-button--${this.size}`, mode];
+    return ['freida-button', `freida-button--${this.size}`, mode];
   }
+
 }

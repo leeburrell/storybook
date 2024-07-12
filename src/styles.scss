@@ -17,20 +17,20 @@ body {
 }
 
 $custom-primary-palette: (
-	50: #e1f5fe,
-	100: #b3e5fc,
-	200: #81d4fa,
-	300: #4fc3f7,
-	400: #29b6f6,
-	500: #03a9f4,
-	600: #039be5,
-	700: #0288d1,
-	800: #0277bd,
-	900: #01579b,
-	A100: #80d8ff,
-	A200: #40c4ff,
-	A400: #00b0ff,
-	A700: #0091ea,
+	50: #0060e6,
+	100: #0060e6,
+	200: #0060e6,
+	300: #0060e6,
+	400: #0060e6,
+	500: #0060e6,
+	600: #0060e6,
+	700: #0060e6,
+	800: #0060e6,
+	900: #0060e6,
+	A100: #0060e6,
+	A200: #0060e6,
+	A400: #0060e6,
+	A700: #0060e6,
 	contrast: (
 		50: #000,
 		100: #000,
@@ -82,7 +82,7 @@ $custom-primary-palette2: (
 	)
 );
 
-$custom-primary: mat.m2-define-palette($custom-primary-palette2);
+$custom-primary: mat.m2-define-palette($custom-primary-palette);
 $custom-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
 $custom-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
